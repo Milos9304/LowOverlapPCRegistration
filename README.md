@@ -10,7 +10,7 @@
 
 ## Dataset
 Place folders A1 B1 C1 D1 E1 into 8thFloor folder.
-Dataset file available soon.
+Dataset available soon for download.
 
 ## Building
     cmake .
