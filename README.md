@@ -1,5 +1,5 @@
 Source code of point cloud registration tool robust against cases with low overlapping regions.
-This is a support code to a publication *LINK COMING SOON*
+This is a support code to a publication https://www.mdpi.com/2072-4292/12/1/61
 
 **Ensure _git-lfs_ is installed on your system before cloning this repository!**
 
