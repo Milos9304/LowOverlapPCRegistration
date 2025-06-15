@@ -207,6 +207,7 @@ float ParabolicCylinder::getScoreTy(Eigen::MatrixXf& lines, float ty, float min_
     return score; 
 }
 
+// This function implements approximation to parabolic arc length function, namely the Equation A6 in the corresponding publication
 float ParabolicCylinder::parabolicDistance(float y1, float y2){
 
     float c1 = 1 + four_k_to_four * pow(y2, 2);

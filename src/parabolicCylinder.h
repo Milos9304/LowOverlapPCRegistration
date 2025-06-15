@@ -30,12 +30,13 @@ class ParabolicCylinder{
         float four_k_to_four;
         Eigen::MatrixXf coefficientsB;
         Eigen::MatrixXf staticIntersections;
-        //float cacheEntry;
         Eigen::MatrixXf xyCached;
         DecisionTreeParabolic* decisionTreeX;
         DecisionTreeParabolic* decisionTreeY;
 
         Eigen::MatrixXf _createCoefficientsTable(Eigen::MatrixXf&, bool);
+
+	// This function implements approximation to parabolic arc length function, namely the Equation A6 in the corresponding publication
         float parabolicDistance(float, float);
 };
 
