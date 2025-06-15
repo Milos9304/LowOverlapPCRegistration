@@ -16,7 +16,8 @@
 #include <string>
 #include <vector>
 //#include <cstdlib>
-#include <pcl/io/io.h>
+//#include <pcl/io/io.h>
+#include <pcl/common/common_headers.h>
 //#include <pcl/io/pcd_io.h>
 //#include <pcl/point_types.h>
 #include <pcl/features/integral_image_normal.h>

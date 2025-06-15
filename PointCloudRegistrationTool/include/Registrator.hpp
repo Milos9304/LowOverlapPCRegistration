@@ -11,11 +11,16 @@
 
 // Standard
 #include <stdio.h>
+#include <cmath> 
 
 // Boost
 #include <boost/shared_ptr.hpp>
 
 // PCL
+#include <pcl/point_types.h>
+#include <pcl/common/point_tests.h>
+#include <pcl/common/impl/io.hpp>
+#include <pcl/common/common.h>
 #include <pcl/io/ply_io.h>
 #include <pcl/point_types.h>
 #include <pcl/kdtree/kdtree_flann.h>

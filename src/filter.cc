@@ -1,4 +1,5 @@
 #include "filter.h"
+#include <pcl/search/search.h>
 
 //Statistical filter parameters
 #define MEAN_K 150//50 //number of nearest neighbors

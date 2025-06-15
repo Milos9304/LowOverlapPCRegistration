@@ -267,7 +267,7 @@ void Registrator::findCorrespondences() {
     {
         std::vector<int> neighbor_indice (1);
         std::vector<float> neighbor_squared_distance (1);
-        if (!pcl_isfinite (t_cloud_descriptors_->at(i).descriptor[0])) //skipping NaNs
+        if (!std::isfinite (t_cloud_descriptors_->at(i).descriptor[0])) //skipping NaNs
         {
             continue;
         }

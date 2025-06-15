@@ -113,7 +113,7 @@ pcl::CropHull<pcl::PointXYZ> IntersectionInterface::getIntersectionFilter(){
 
     pcl::ConvexHull<pcl::PointXYZ> convexHull = this -> getIntersectionHull();
 
-    boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> hullPoints(new pcl::PointCloud<pcl::PointXYZ>());
+    std::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> hullPoints(new pcl::PointCloud<pcl::PointXYZ>());
     std::vector<pcl::Vertices> hullPolygons;
     convexHull.reconstruct(*hullPoints, hullPolygons);	
     
