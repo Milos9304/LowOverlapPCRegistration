@@ -107,6 +107,7 @@ void ParabolicCylinder::setStaticPointCloud(Eigen::MatrixXf& lines_unfiltered){
     std::sort(rightSideZ.begin(), rightSideZ.end(), [](const CoordAndT& a, const CoordAndT& b){return std::get<0>(a) < std::get<0>(b);});
   
     this -> decisionTreeX = new DecisionTreeParabolic(leftSideX.data(), leftSideX.data()+leftSideX.size()-1, rightSideX.data(), rightSideX.data()+rightSideX.size()-1); 
+    //We note that populating decisionTreeY with leftSideZ is not a bug. See comment on line 199 for explanation. 
     this -> decisionTreeY = new DecisionTreeParabolic(leftSideZ.data(), leftSideZ.data()+leftSideZ.size()-1, rightSideZ.data(), rightSideZ.data()+rightSideZ.size()-1);
 
 }
@@ -195,11 +196,10 @@ float ParabolicCylinder::getScoreTy(Eigen::MatrixXf& lines, float ty, float min_
         if(std::isnan(row[1]))
             continue;
 
-        CoordAndT nearestPoint = decisionTreeY -> inference(row[0], row[1]);
-
+        // We note that the choice of the second coordinate of 'row' is not a bug; rather, it corresponds to a non-conventional feature of the dataset at the time of writing the code, where point coordinates were stored in the order (X, Z, Y). As a result, 'row[1]' accesses the Z-coordinate. Similarly, 'decisionTreeY' is initialized on line 110 with 'leftSideZ', meaning that its internal representation and inference are performed over Z-values. While this contradicts the convention used in the paper (where Z is the fixed axis), the implementation remains correct due to consistent usage of Z in both matching and scoring. The naming remains for legacy reasons. 
+	CoordAndT nearestPoint = decisionTreeY -> inference(row[0], row[1]);
         float distance = this -> parabolicDistance(row[1], std::get<0>(nearestPoint));
 
-        //TODO: UNCOMMENT THE BOTTOM ONE. WORKS FOR A-B, B-C 
         score *= 1 + 0.1*exp(-0.5/(pow( min_sigma+min_sigma*t(i)/(this->width*2), 2))*pow(distance,2));
 
     }
